@@ -101,15 +101,15 @@ const app = Vue.createApp({
             let partys = [{
                 nameParty:"Democrat",
                 totalVotesParty:contDemocrat,
-                totalPctPart:(votesDemocrat / contDemocrat).toFixed(2),
+                totalPctPart:((votesDemocrat / contDemocrat) ? (votesDemocrat / contDemocrat) : 0).toFixed(2),
             },{
                 nameParty:"Republican",
                 totalVotesParty:contRepublican,
-                totalPctPart:(votesRepublican / contRepublican).toFixed(2),
+                totalPctPart:((votesRepublican / contRepublican) ? (votesRepublican / contRepublican) : 0).toFixed(2),
             },{
                 nameParty:"Independent",
                 totalVotesParty:contIndependet,
-                totalPctPart:(votesIndependet / contIndependet).toFixed(2),
+                totalPctPart:((votesIndependet / contIndependet) ? (votesIndependet / contIndependet) : 0).toFixed(2),
             },{
                 nameParty:"Total",
                 totalVotesParty: contRepublican + contIndependet + contDemocrat,
