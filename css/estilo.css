@@ -1,0 +1,62 @@
+*{
+    margin:0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+header{
+    height: 15vh;
+    width: 100vw;
+}
+
+#imgMail{
+    height: 5vh;
+}
+
+
+nav{
+    height: 10vh;
+    width: 100vw;
+}
+
+main{
+    min-height: 70vh;
+    width: 100vw;
+    padding: 20px;
+}
+
+footer{
+    height: 5vh;
+    width: 100vw;
+}
+
+main .parrafo{
+    width: 70%;
+    padding: 20px;
+}
+
+#imgMain{
+    height: 25vh;
+}
+
+#comentario{
+    width: 70%;
+
+}
+.seccion{
+    height: 30vh;
+    width: 40vw;
+    margin-top: 1vh;
+    overflow: scroll;
+    padding: 20px;
+    box-shadow: 0px 8px 10px rgb(112, 108, 108);
+}
+
+#container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    
+}

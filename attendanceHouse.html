@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/estilo.css">
+    <title>Attendace House</title>
+</head>
+<body>
+    <div id="app">
+        <header class ="d-flex align-items-center justify-content-between">
+            <div class = "d-flex align-items-center ms-3">
+                <img src="img/iconoLupa.png" alt="" id = "imgLupa">
+                <h1 class = "ms-2">TGIF LOGO</h1>
+            </div>
+            <div class ="me-3">
+                <img src="img/email icon.png" alt="" id="imgMail" class = "me-2">
+                <a href="#">info@tgif.net</a>
+            </div>
+        </header>
+        <nav>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-lg p-3 mb-5 bg-white rounded">
+                <div class="container-fluid">
+                  <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                      <li class="nav-item">
+                        <a class="nav-link active " aria-current="page" href="index.html">Home</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Congress 113
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item" href="house.html">House</a></li>
+                          <li><a class="dropdown-item" href="senate.html">Senate</a></li>
+                        </ul>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Attendance
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item" href="attendanceHouse.html">House</a></li>
+                          <li><a class="dropdown-item" href="attendanceSenate.html">Senate</a></li>
+                        </ul>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Party Loyalty
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item" href="partyLoyaltyHouse.html">House</a></li>
+                          <li><a class="dropdown-item" href="partyLoyaltySenate.html">Senate</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>  
+        </nav>
+        <main id = "house">
+          <div id="container">
+
+            <section class="seccion">
+              <h3>Attendance</h3>
+              <p>The Constitution specifies that a majority of members constitutes a quorum to do business in each house. Representatives and senators rarely force the presence of a quorum by demanding quorum calls; thus, in most cases, debates continue even if a majority is not present. The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator stating "aye" or "no" when his or her name is announced. The House reserves roll-call votes for the most formal matters, as a roll-call of all 435 representatives takes quite some time; normally, members vote by electronic device. In the case of a tie, the motion in question fails. In the Senate, the Vice President may (if present) cast the tiebreaking vote. Senate at a glance
+              </p>
+            </section>
+
+            <section class="seccion">
+              <h3>Senate at a glance</h3>
+              <table class="table table-bordered ">
+                <thead>
+                  <tr>
+                      <th>Party</th>
+                      <th>No. of Reps</th>
+                      <th>% voted w/ Party</th>
+                  </tr>
+                </thead>
+              <tbody id="totalVotes">
+                <tr v-for="member in filtrarPartido">
+                  <td>{{member.nameParty}}</td>
+                  <td>{{member.totalVotesParty}}</td>
+                  <td>{{member.totalPctPart}}</td>
+                </tr>
+              </tbody>
+
+            </table>
+              </section>
+
+            <section class="seccion">
+              <h2>Least Engaged (Bottom 10% Attendance)</h2>
+              <table class="table table-bordered ">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>No. Missed Votes</th>
+                    <th>% Missed</th>
+                  </tr>
+                </thead>
+                <tbody id="bottomVote">
+                  <tr v-for="member in ordenarLeast">
+                    <td>{{member.first_name}}</td>
+                    <td>{{member.missed_votes}}</td>
+                    <td>{{member.missed_votes_pct}}</td>
+                </tr>
+                </tbody>
+
+              </table>
+            </section>
+            <section class="seccion">
+              <h2>Most Enngaged (Top 10% Attendance)</h2>
+              <table class="table table-bordered ">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>No. Missed Votes</th>
+                        <th>% Missed</th>
+                    </tr>
+                  </thead>
+                <tbody id="topVote">
+                  <tr v-for="member in ordenarMost">
+                    <td>{{member.first_name}}</td>
+                    <td>{{member.missed_votes}}</td>
+                    <td>{{member.missed_votes_pct}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+          </div>
+        </main>
+        <footer>
+            <P class ="d-flex align-items-center justify-content-center">@2026 TGIF | All rigths Reserved</P>
+        </footer>
+    </div>
+
+
+
+
+
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="../New task 4/js/app.js"></script>
+</body>
+</html>

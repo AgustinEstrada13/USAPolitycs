@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/estilo.css">
+    <title>House</title>
+</head>
+<body>
+    <div id="app">
+        <header class ="d-flex align-items-center justify-content-between">
+            <div class = "d-flex align-items-center ms-3">
+                <img src="img/iconoLupa.png" alt="" id = "imgLupa">
+                <h1 class = "ms-2">TGIF LOGO</h1>
+            </div>
+            <div class ="me-3">
+                <img src="img/email icon.png" alt="" id="imgMail" class = "me-2">
+                <a href="#">info@tgif.net</a>
+            </div>
+        </header>
+        <nav>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-lg p-3 mb-5 bg-white rounded">
+                <div class="container-fluid">
+                  <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                      <li class="nav-item">
+                        <a class="nav-link active " aria-current="page" href="index.html">Home</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Congress 113
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item" href="house.html">House</a></li>
+                          <li><a class="dropdown-item" href="senate.html">Senate</a></li>
+                        </ul>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Attendance
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item" href="attendanceHouse.html">House</a></li>
+                          <li><a class="dropdown-item" href="attendanceSenate.html">Senate</a></li>
+                        </ul>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Party Loyalty
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item" href="partyLoyaltyHouse.html">House</a></li>
+                          <li><a class="dropdown-item" href="partyLoyaltySenate.html">Senate</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>  
+        </nav>
+        <main id = "house">
+            <div id ="comentario">
+                <h3>Senator</h3>
+                <p>First convened in 1789, the composition and powers of the Senate are established in Article One of the U.S. Constitution. Each state is represented by two senators, regardless of population, who serve staggered six-year terms. The Senate has several exclusive powers not granted to the House, including consenting to treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet secretaries, federal judges, other federal executive officials, military officers, regulatory officials, ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by the House.<p>
+            </div>
+
+            <div class = "d-flex align-items-center flex-wrap">
+
+                <h4>Filter by Party</h4>
+
+                <div class ="ms-5"> 
+                    <input v-model="partidos" type="checkbox" id="democratas" name="partidos" value="D">
+                    <label for="democratas" class = "ms-2">Democrat</label>
+                </div>
+                <div class ="ms-2">
+                    <input v-model="partidos" type="checkbox" id="republicanos" name="partidos" value="R">
+                    <label for="republicanos" class = "ms-2">Republicans</label>
+                </div>
+                <div class ="ms-2">
+                    <input v-model="partidos" type="checkbox" id="independientes" name="partidos" value="I">
+                    <label for="independientes" class = "ms-2">Independent</label>
+                </div>
+
+                <div class="dropdown ms-5">
+                    <select v-model="selected" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                        <option selected>Filtered by State</option>
+                        <option v-for="state in filtarEstados" :value="state">{{state}}</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="tabla mt-4">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                                <th>Name</th>
+                                <th>Party</th>
+                                <th>State</th>
+                                <th>Years in Office</th>
+                                <th>% Votes w/ Party</th>
+                            </tr>
+                    </thead>
+                    <tbody id="tBodySenate">
+                        <tr v-for="member in filtrarMiembros">
+                            <td>{{member.first_name}} {{member.middle_name || ""}} {{member.last_name}}</td>
+                            <td>{{member.party}}</td>
+                            <td>{{member.state}}</td>
+                            <td>{{member.seniority}}</td>
+                            <td>{{member.votes_with_party_pct}}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        <footer>
+            <P class ="d-flex align-items-center justify-content-center">@2026 TGIF | All rigths Reserved</P>
+        </footer>
+    </div>
+
+
+
+
+
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="../New task 4/js/app.js"></script>
+</body>
+</html>
