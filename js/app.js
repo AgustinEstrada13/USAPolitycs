@@ -9,7 +9,6 @@ const app = Vue.createApp({
             states: [],
             selected:"",
             partidos:[],
-            // arrayOrdenado: ordernar(missed_votes_pct,true)
             
         }
     },
